@@ -6,8 +6,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
-import {RouterModule} from '@angular/router';
-import appRoutes from './routerConfig';
+import { AppRoutingModule } from './app-routing.module';
 import {MatButtonModule, MatToolbarModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -21,7 +20,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
     FlexLayoutModule
