@@ -1,0 +1,8 @@
+<h1>Search for Classical Music</h1>
+<p class="lead">Use the Sp Classical site to find classical music recordings in Spotify</p>
+<form class="form-group">
+  <mat-form-field>
+    <input matInput placeholder="Enter search text" name="searchStr" [(ngModel)]="searchStr"
+      (keyup)="searchMusic()">
+  </mat-form-field>
+</form>

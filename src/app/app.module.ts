@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SearchComponent } from './search/search.component';
 import { AppRoutingModule } from './app-routing.module';
-import {MatButtonModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule} from '@angular/forms';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {AboutComponent} from './components/about/about.component';
+import {SearchComponent} from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
