@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SpotifyService} from '../../services/spotify.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -7,13 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   searchStr: string;
+  search = new FormControl();
 
-  constructor() { }
+  constructor(private spotifyService: SpotifyService) {
+  }
 
   ngOnInit() {
   }
 
   searchMusic() {
-    console.log(this.searchStr);
+    this.searchStr = this.search.value;
+    if (this.searchStr.trim().length > 0) {
+      this.spotifyService.searchMusic(this.searchStr)
+        .subscribe(res => {
+          console.log(res);
+        });
+      console.log(this.searchStr);
+    }
   }
 }
