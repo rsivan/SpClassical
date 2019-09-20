@@ -12,7 +12,6 @@ import {AboutComponent} from './components/about/about.component';
 import {SearchComponent} from './components/search/search.component';
 import {SpotifyService} from './services/spotify.service';
 import {HttpClientModule} from '@angular/common/http';
-import {OAuthModule} from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import {OAuthModule} from 'angular-oauth2-oidc';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    OAuthModule.forRoot()
   ],
   providers: [SpotifyService],
   bootstrap: [AppComponent]

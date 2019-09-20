@@ -1,57 +1,66 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {AuthConfig, JwksValidationHandler, OAuthService} from 'angular-oauth2-oidc';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyService {
 
+  private static ClientId = '57dcebec125f4dd69e55e1789587c379';
+  private static AuthUrl = 'https://accounts.spotify.com/authorize';
+  private static Scope = 'user-read-private user-read-email';
+
   private searchUrl: string;
-  private SpotifyClientId = '57dcebec125f4dd69e55e1789587c379';
-
-  private loginToken: object = null;
-
-  private authConfig: AuthConfig = {
-
-    // Url of the Identity Provider
-    issuer: 'https://accounts.spotify.com/authorize',
-
-    // URL of the SPA to redirect the user to after login
-    redirectUri: window.location.origin + '/',
-
-    // The SPA's id. The SPA is registered with this id at the auth-server
-    clientId: this.SpotifyClientId,
-
-    // set the scope for the permissions the client should request
-    // The first three are defined by OIDC. The 4th is a usecase-specific one
-    scope: 'user-read-private user-read-email',
-  };
 
   constructor(
     private http: HttpClient,
-    private oauthService: OAuthService
   ) {
-    this.configureAuthentication();
-  }
-
-  private configureAuthentication() {
-    this.oauthService.configure(this.authConfig);
-    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    this.oauthService.loadDiscoveryDocumentAndTryLogin();
   }
 
   login() {
     console.log('logging in');
-    this.oauthService.initLoginFlow();
+    const state = this.generateRandomString(16);
+    localStorage.removeItem('SpClassical-token');
+    localStorage.setItem('SpClassical-state', state);
+    const httpParams =
+      new HttpParams()
+        .set('client_id', SpotifyService.ClientId)
+        .set('response_type', 'token')
+        .set('redirect_uri', window.location.origin)
+        .set('scope', SpotifyService.Scope)
+        .set('state', state)
+        // .set('show_dialog', 'true')
+    ;
+
+    const url = SpotifyService.AuthUrl + '?' + httpParams.toString();
+    console.log('url: ' + url);
+    window.location.replace(url);
+
+    // this.http.get(this.AuthUrl, {params: httpParams}).subscribe(resp => {
+    //   console.log(resp);
+    // });
   }
 
   logout() {
-    this.oauthService.logOut();
+    console.log('logging out XXX');
+    // XXX
   }
 
   isLoggedIn(): boolean {
-    return this.loginToken != null;
+    return localStorage.getItem('SpClassical-token') != null;
+  }
+
+  /**
+   * Generates a random string containing numbers and letters
+   */
+  generateRandomString(length: number) {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
   }
 
   searchMusic(str: string, type = 'artist') {
