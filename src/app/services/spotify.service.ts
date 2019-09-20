@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,7 @@ export class SpotifyService {
     return this.accessToken != null;
   }
 
-  searchMusic(str: string, type = 'artist') {
+  searchMusic(str: string, type = 'artist'): Observable<any> {
     this.searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;
     // this.searchUrl = `https://api.spotify.com/v1/search#access_token=${encodeURIComponent(this.accessToken)}` +
     //   `&token_type=Bearer&expires_in=3600&state=${this.state}?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;

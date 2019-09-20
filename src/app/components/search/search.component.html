@@ -10,3 +10,11 @@
       (keyup)="searchMusic()">
   </mat-form-field>
 </form>
+
+<div *ngIf="searchRes">
+  <div *ngFor="let res of searchRes">
+    <div>
+      <h4>{{res.name}}</h4>
+    </div>
+  </div>
+</div>

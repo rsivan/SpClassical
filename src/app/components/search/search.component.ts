@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SpotifyService} from '../../services/spotify.service';
 import {FormControl} from '@angular/forms';
+import {Artist} from '../../models/artist';
 
 @Component({
   selector: 'app-search',
@@ -8,8 +9,8 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searchStr: string;
   search = new FormControl();
+  searchRes: Artist[];
 
   constructor(private spotifyService: SpotifyService) {
   }
@@ -18,13 +19,14 @@ export class SearchComponent implements OnInit {
   }
 
   searchMusic() {
-    this.searchStr = this.search.value;
-    if (this.searchStr.trim().length > 0) {
-      this.spotifyService.searchMusic(this.searchStr)
+    const searchStr = this.search.value;
+    if (searchStr.trim().length > 0) {
+      this.spotifyService.searchMusic(searchStr)
         .subscribe(res => {
           console.log(res);
+          this.searchRes = res.artists.items;
         });
-      console.log(this.searchStr);
+      console.log(searchStr);
     }
   }
 }
