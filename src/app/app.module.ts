@@ -12,13 +12,15 @@ import {AboutComponent} from './components/about/about.component';
 import {SearchComponent} from './components/search/search.component';
 import {SpotifyService} from './services/spotify.service';
 import {HttpClientModule} from '@angular/common/http';
+import { FetchTokenComponent } from './components/fetch-token/fetch-token.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     AboutComponent,
-    SearchComponent
+    SearchComponent,
+    FetchTokenComponent
   ],
   imports: [
     BrowserModule,
