@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -36,6 +36,7 @@ import { ArtistComponent } from './components/artist/artist.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatCardModule,
   ],
   providers: [SpotifyService],
   bootstrap: [AppComponent]

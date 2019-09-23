@@ -10,3 +10,26 @@
   float: left;
   margin-right: 10px;
 }
+
+.artist-albums {
+  column-count: 3;
+  flex-wrap: wrap;
+}
+
+.albums-thumbs-list {
+  margin-bottom: 20px;
+  overflow: auto;
+  min-height: 400px;
+}
+
+.artist-album {
+  width: 340px;
+  text-align: center;
+  padding: 10px 20px;
+  border: #666 1px solid;
+}
+
+.album-thumb {
+  width: 120px;
+  height: auto;
+}

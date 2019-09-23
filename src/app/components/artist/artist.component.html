@@ -7,10 +7,16 @@
     <strong>Genres: </strong>
     <span>{{artist.genres.join(" / ")}}</span>
   </header>
-  <div class="artist-albums">
-    <div class="artist-album">
-      <div *ngFor="let album of albums">
-        {{album.name}}
+  <div class="artist-albums" fxLayout="row" fxLayoutGap="10px">
+    <div *ngFor="let album of albums">
+      <div class="artist-album">
+        <div *ngIf="album.images.length > 0">
+          <mat-card>
+            <img class="album-thumb" src="{{album.images[0].url}}" alt="Image for album {{album.name}}">
+            <h4>{{album.name}}</h4>
+            <a>Album Details</a>
+          </mat-card>
+        </div>
       </div>
     </div>
   </div>
