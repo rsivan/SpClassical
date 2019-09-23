@@ -1,3 +1,10 @@
 <div *ngIf="artist">
-  {{artist.name}}
+  <header class="artist-header">
+    <div *ngIf="artist.images.length > 0">
+      <img class="artist-thumb" src="{{artist.images[0].url}}" alt="image for {{artist.name}}">
+    </div>
+    <h1>{{artist.name}}</h1>
+    <strong>Genres: </strong>
+    <span>{{artist.genres.join(" / ")}}</span>
+  </header>
 </div>
