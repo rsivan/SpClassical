@@ -16,6 +16,9 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.spotifyService.isLoggedIn()) {
+      this.spotifyService.login();
+    }
   }
 
   searchMusic() {

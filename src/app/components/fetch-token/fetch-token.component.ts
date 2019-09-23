@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {SpotifyService} from '../../services/spotify.service';
 
 @Component({
@@ -9,6 +9,7 @@ export class FetchTokenComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private spotifyService: SpotifyService
   ) { }
 
@@ -18,6 +19,7 @@ export class FetchTokenComponent implements OnInit {
       console.log(fragment);
       const args = new URLSearchParams(fragment);
       this.spotifyService.updateToken(args);
+      this.router.navigateByUrl('/');
     });
   }
 
