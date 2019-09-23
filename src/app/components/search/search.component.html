@@ -14,7 +14,11 @@
 <div *ngIf="searchRes">
   <div *ngFor="let res of searchRes">
     <div>
-      <h4>{{res.name}}</h4>
+      <h4><a href="#">{{res.name}}</a></h4>
+      <div>
+        <strong>Genres: </strong>
+        <span>{{res.genres.join(" / ")}}</span>
+      </div>
     </div>
   </div>
 </div>
