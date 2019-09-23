@@ -16,8 +16,6 @@ export class SpotifyService {
   private state: string = null;
   private accessToken: string = null;
 
-  private searchUrl: string = null;
-
   /**
    * Generates a random string containing numbers and letters
    */
@@ -69,16 +67,25 @@ export class SpotifyService {
   }
 
   searchMusic(str: string, type = 'artist'): Observable<any> {
-    this.searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;
-    // this.searchUrl = `https://api.spotify.com/v1/search#access_token=${encodeURIComponent(this.accessToken)}` +
-    //   `&token_type=Bearer&expires_in=3600&state=${this.state}?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;
-    console.log(this.searchUrl);
+    const searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;
+    console.log(searchUrl);
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.accessToken
       })
     };
-    return this.http.get(this.searchUrl, httpOptions);
+    return this.http.get(searchUrl, httpOptions);
+  }
+
+  getArtist(id: string): Observable<any> {
+    const artistUrl = `https://api.spotify.com/v1/artists/${id}`;
+    console.log(artistUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.accessToken
+      })
+    };
+    return this.http.get(artistUrl, httpOptions);
   }
 
   updateToken(args: URLSearchParams) {

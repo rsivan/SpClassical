@@ -13,6 +13,7 @@ import {SearchComponent} from './components/search/search.component';
 import {SpotifyService} from './services/spotify.service';
 import {HttpClientModule} from '@angular/common/http';
 import { FetchTokenComponent } from './components/fetch-token/fetch-token.component';
+import { ArtistComponent } from './components/artist/artist.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FetchTokenComponent } from './components/fetch-token/fetch-token.compon
     NavbarComponent,
     AboutComponent,
     SearchComponent,
-    FetchTokenComponent
+    FetchTokenComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
