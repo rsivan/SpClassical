@@ -7,4 +7,5 @@ export class Album {
   release_date: any;
   // tslint:disable-next-line:variable-name
   external_urls: any;
+  tracks: any;
 }

@@ -1,3 +1,4 @@
+<!--suppress TypeScriptUnresolvedVariable -->
 <div *ngIf="album">
   <header class="album-header">
     <div class="album-image-part">
@@ -10,10 +11,18 @@
         </h4>
         <h2>{{album.name}}</h2>
         <h5>Release date: {{album.release_date}}</h5>
-        <a mat-raised-button href="{{album.external_urls.spotify}}">View in Spotify</a>
+        <a mat-raised-button target="_blank" href="{{album.external_urls.spotify}}">View in Spotify</a>
       </div>
     </div>
     <div class="album-description-part">
     </div>
   </header>
+  <div class="album-tracks">
+    <h2>Album Tracks</h2>
+    <div *ngFor="let track of album.tracks.items">
+      <div>
+        <h5>{{track.track_number}} - {{track.name}}</h5>
+      </div>
+    </div>
+  </div>
 </div>
