@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.css']
+  styleUrls: ['./artist.component.scss']
 })
 export class ArtistComponent implements OnInit {
   id: string;
