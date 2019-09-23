@@ -14,6 +14,7 @@ import {SpotifyService} from './services/spotify.service';
 import {HttpClientModule} from '@angular/common/http';
 import { FetchTokenComponent } from './components/fetch-token/fetch-token.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { AlbumComponent } from './components/album/album.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ArtistComponent } from './components/artist/artist.component';
     AboutComponent,
     SearchComponent,
     FetchTokenComponent,
-    ArtistComponent
+    ArtistComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

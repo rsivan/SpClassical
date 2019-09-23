@@ -14,7 +14,7 @@
           <mat-card>
             <img class="album-thumb" src="{{album.images[0].url}}" alt="Image for album {{album.name}}">
             <h4>{{album.name}}</h4>
-            <a>Album Details</a>
+            <a routerLink="/album/{{album.id}}">Album Details</a>
           </mat-card>
         </div>
       </div>

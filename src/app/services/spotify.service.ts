@@ -96,6 +96,16 @@ export class SpotifyService {
     return this.http.get(albumsUrl, httpOptions);
   }
 
+  getAlbum(albumId: string): Observable<any> {
+    const albumUrl = `https://api.spotify.com/v1/albums/${albumId}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.accessToken
+      })
+    };
+    return this.http.get(albumUrl, httpOptions);
+  }
+
   updateToken(args: URLSearchParams) {
     const accessToken = args.get('access_token');
     const state = args.get('state');
