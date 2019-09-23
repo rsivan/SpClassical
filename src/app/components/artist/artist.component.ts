@@ -3,6 +3,7 @@ import {SpotifyService} from '../../services/spotify.service';
 import {Album} from '../../models/album';
 import {Artist} from '../../models/artist';
 import {ActivatedRoute} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-artist',
@@ -25,14 +26,13 @@ export class ArtistComponent implements OnInit {
       this.spotifyService.login();
     }
     this.route.params
-      .subscribe(params => {
-        this.spotifyService.getArtist(params.id)
+      .pipe(
+        map(params => params.id)
+      )
+      .subscribe(id => {
+        this.spotifyService.getArtist(id)
           .subscribe(artist => {
-            console.log('artist');
-            console.log(artist);
             this.artist = artist;
-            console.log('this.artist');
-            console.log(this.artist);
           });
       });
   }
