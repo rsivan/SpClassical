@@ -68,7 +68,6 @@ export class SpotifyService {
 
   searchMusic(str: string, type = 'artist'): Observable<any> {
     const searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;
-    console.log(searchUrl);
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.accessToken
@@ -79,13 +78,22 @@ export class SpotifyService {
 
   getArtist(id: string): Observable<any> {
     const artistUrl = `https://api.spotify.com/v1/artists/${id}`;
-    console.log(artistUrl);
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.accessToken
       })
     };
     return this.http.get(artistUrl, httpOptions);
+  }
+
+  getAlbums(artistId: string): Observable<any> {
+    const albumsUrl = `https://api.spotify.com/v1/artists/${artistId}/albums`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.accessToken
+      })
+    };
+    return this.http.get(albumsUrl, httpOptions);
   }
 
   updateToken(args: URLSearchParams) {

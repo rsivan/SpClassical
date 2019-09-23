@@ -7,4 +7,11 @@
     <strong>Genres: </strong>
     <span>{{artist.genres.join(" / ")}}</span>
   </header>
+  <div class="artist-albums">
+    <div class="artist-album">
+      <div *ngFor="let album of albums">
+        {{album.name}}
+      </div>
+    </div>
+  </div>
 </div>
