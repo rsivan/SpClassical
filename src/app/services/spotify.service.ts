@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 export class SpotifyService {
 
   static AuthStateKey = 'SpClassical-state';
+  static AuthTokenKey = 'SpClassical-auth-token';
 
   private static ClientId = '57dcebec125f4dd69e55e1789587c379';
   private static AuthUrl = 'https://accounts.spotify.com/authorize';
@@ -68,42 +69,22 @@ export class SpotifyService {
 
   searchMusic(str: string, type = 'artist'): Observable<any> {
     const searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.accessToken
-      })
-    };
-    return this.http.get(searchUrl, httpOptions);
+    return this.http.get(searchUrl);
   }
 
   getArtist(id: string): Observable<any> {
     const artistUrl = `https://api.spotify.com/v1/artists/${id}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.accessToken
-      })
-    };
-    return this.http.get(artistUrl, httpOptions);
+    return this.http.get(artistUrl);
   }
 
   getAlbums(artistId: string): Observable<any> {
     const albumsUrl = `https://api.spotify.com/v1/artists/${artistId}/albums`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.accessToken
-      })
-    };
-    return this.http.get(albumsUrl, httpOptions);
+    return this.http.get(albumsUrl);
   }
 
   getAlbum(albumId: string): Observable<any> {
     const albumUrl = `https://api.spotify.com/v1/albums/${albumId}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.accessToken
-      })
-    };
-    return this.http.get(albumUrl, httpOptions);
+    return this.http.get(albumUrl);
   }
 
   updateToken(args: URLSearchParams) {
@@ -115,6 +96,7 @@ export class SpotifyService {
       console.log(`ignoring null token`);
     } else {
       this.accessToken = accessToken;
+      localStorage.setItem(SpotifyService.AuthTokenKey, this.accessToken);
     }
   }
 }
