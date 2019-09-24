@@ -68,7 +68,7 @@ export class SpotifyService {
   }
 
   searchMusic(str: string, type = 'artist'): Observable<any> {
-    const searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}`;
+    const searchUrl = `https://api.spotify.com/v1/search?q=${encodeURIComponent(str)}&type=${encodeURIComponent(type)}&market=from_token`;
     return this.http.get(searchUrl);
   }
 
@@ -78,7 +78,7 @@ export class SpotifyService {
   }
 
   getAlbums(artistId: string): Observable<any> {
-    const albumsUrl = `https://api.spotify.com/v1/artists/${artistId}/albums`;
+    const albumsUrl = `https://api.spotify.com/v1/artists/${artistId}/albums?market=from_token`;
     return this.http.get(albumsUrl);
   }
 
