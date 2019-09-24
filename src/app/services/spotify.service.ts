@@ -87,6 +87,10 @@ export class SpotifyService {
     return this.http.get(albumUrl);
   }
 
+  getAlbumsNext(nextUrl: string): Observable<any> {
+    return this.http.get(nextUrl);
+  }
+
   updateToken(args: URLSearchParams) {
     const accessToken = args.get('access_token');
     const state = args.get('state');

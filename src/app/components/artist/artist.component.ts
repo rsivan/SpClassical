@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {SpotifyService} from '../../services/spotify.service';
-import {Album} from '../../models/album';
 import {Artist} from '../../models/artist';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -13,7 +12,7 @@ import {map} from 'rxjs/operators';
 export class ArtistComponent implements OnInit {
   id: string;
   artist: Artist;
-  albums: Album[];
+  albums = [];
 
   constructor(
     private spotifyService: SpotifyService,
@@ -36,9 +35,22 @@ export class ArtistComponent implements OnInit {
           });
         this.spotifyService.getAlbums(artistId)
           .subscribe(albums => {
-            this.albums = albums.items;
+            this.albums.push(...albums.items);
+            if (albums.next) {
+              this.getMoreAlbums(albums.next);
+            }
           });
       });
   }
 
+  // recursive
+  private getMoreAlbums(nextUrl: string) {
+    this.spotifyService.getAlbumsNext(nextUrl)
+      .subscribe(albums => {
+        this.albums.push(...albums.items);
+        if (albums.next) {
+          this.getMoreAlbums(albums.next);
+        }
+      });
+  }
 }
