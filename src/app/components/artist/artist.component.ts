@@ -25,9 +25,9 @@ export class ArtistComponent implements OnInit {
     if (!this.spotifyService.isLoggedIn()) {
       this.spotifyService.login();
     }
-    this.route.params
+    this.route.paramMap
       .pipe(
-        map(params => params.id)
+        map(params => params.get('id'))
       )
       .subscribe(artistId => {
         this.spotifyService.getArtist(artistId)

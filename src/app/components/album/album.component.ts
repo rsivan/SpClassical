@@ -23,14 +23,15 @@ export class AlbumComponent implements OnInit {
     if (!this.spotifyService.isLoggedIn()) {
       this.spotifyService.login();
     }
-    this.route.params
+    this.route.paramMap
       .pipe(
-        map(params => params.id)
+        map(params => params.get('id'))
       )
       .subscribe(albumId => {
         this.spotifyService.getAlbum(albumId)
           .subscribe(album => {
             this.album = album;
+            console.log(album);
           });
       });
   }

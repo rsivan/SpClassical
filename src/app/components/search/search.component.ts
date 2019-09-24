@@ -29,7 +29,6 @@ export class SearchComponent implements OnInit {
           console.log(res);
           this.searchRes = res.artists.items;
         });
-      console.log(searchStr);
     }
   }
 }

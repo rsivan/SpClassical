@@ -7,11 +7,13 @@ import {ArtistComponent} from './components/artist/artist.component';
 import {AlbumComponent} from './components/album/album.component';
 
 const appRoutes: Routes = [
-  { path: '',             component: SearchComponent },
+  { path: 'search',       component: SearchComponent },
   { path: 'about',        component: AboutComponent },
   { path: 'artist/:id',   component: ArtistComponent },
   { path: 'album/:id',    component: AlbumComponent },
   { path: 'fetch-token',  component: FetchTokenComponent },
+
+  { path: '', redirectTo: '/search', pathMatch: 'full' },
 ];
 
 @NgModule({

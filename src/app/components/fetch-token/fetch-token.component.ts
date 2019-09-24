@@ -15,11 +15,9 @@ export class FetchTokenComponent implements OnInit {
 
   ngOnInit() {
     this.route.fragment.subscribe( (fragment: string) => {
-      console.log('route.fragment:');
-      console.log(fragment);
       const args = new URLSearchParams(fragment);
       this.spotifyService.updateToken(args);
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/search');
     });
   }
 
