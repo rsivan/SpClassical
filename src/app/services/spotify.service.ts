@@ -78,7 +78,7 @@ export class SpotifyService {
   }
 
   getAlbums(artistId: string): Observable<any> {
-    const albumsUrl = `https://api.spotify.com/v1/artists/${artistId}/albums?market=from_token`;
+    const albumsUrl = `https://api.spotify.com/v1/artists/${artistId}/albums?market=from_token&include_groups=album`;
     return this.http.get(albumsUrl);
   }
 
