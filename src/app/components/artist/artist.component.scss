@@ -29,6 +29,13 @@
 }
 
 .album-thumb {
-  width: 100%;
-  height: auto;
+  width: 250px;
+  height: 250px;
+}
+
+.album-thumb-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.4em;
+  line-height: 1.2em;
 }
