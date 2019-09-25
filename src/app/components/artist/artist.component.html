@@ -1,18 +1,19 @@
 <div *ngIf="artist">
   <header class="artist-header">
     <div *ngIf="artist.images.length > 0">
-      <img class="artist-thumb" src="{{artist.images[0].url}}" alt="image for {{artist.name}}">
+      <img class="artist-thumb" src="{{artist.images[0].url}}" alt="image for {{artist.name}}" />
     </div>
     <h1>{{artist.name}}</h1>
     <strong>Genres: </strong>
     <span>{{artist.genres.join(" / ")}}</span>
+    <h4>{{albums.length}} albums</h4>
   </header>
   <div class="artist-albums" fxLayout="row" fxLayoutGap="10px">
     <div *ngFor="let album of albums">
       <div class="artist-album">
         <div *ngIf="album.images.length > 0">
           <mat-card>
-            <img class="album-thumb" src="{{album.images[0].url}}" alt="Image for album {{album.name}}">
+            <img class="album-thumb" src="{{album.images[0].url}}" alt="Image for album {{album.name}}" />
             <h4 class="album-thumb-name">{{album.name}}</h4>
             <a routerLink="/album/{{album.id}}">Album Details</a>
           </mat-card>
