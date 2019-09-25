@@ -11,13 +11,13 @@
   <div class="artist-albums" fxLayout="row" fxLayoutGap="10px">
     <div *ngFor="let album of albums">
       <div class="artist-album">
-        <div *ngIf="album.images.length > 0">
-          <mat-card>
+        <mat-card>
+          <div *ngIf="album.images.length > 0">
             <img class="album-thumb" src="{{album.images[0].url}}" alt="Image for album {{album.name}}" />
-            <h4 class="album-thumb-name">{{album.name}}</h4>
-            <a routerLink="/album/{{album.id}}">Album Details</a>
-          </mat-card>
-        </div>
+          </div>
+          <h4 class="album-thumb-name">{{album.name}}</h4>
+          <a routerLink="/album/{{album.id}}">Album Details</a>
+        </mat-card>
       </div>
     </div>
   </div>
