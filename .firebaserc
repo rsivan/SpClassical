@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "spclassical": {
+      "hosting": {
+        "SpClassical": [
+          "spclassical"
+        ]
+      }
+    }
+  }
+}
