@@ -20,9 +20,6 @@ export class AlbumComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (!this.spotifyService.isLoggedIn()) {
-      this.spotifyService.login();
-    }
     this.route.paramMap
       .pipe(
         map(params => params.get('id'))

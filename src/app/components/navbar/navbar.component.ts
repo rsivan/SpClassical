@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {SpotifyService} from '../../services/spotify.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,21 +8,8 @@ import {SpotifyService} from '../../services/spotify.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private spotifyService: SpotifyService
   ) { }
 
   ngOnInit() {
-  }
-
-  isLoggedIn() {
-    return this.spotifyService.isLoggedIn();
-  }
-
-  login() {
-    this.spotifyService.login();
-  }
-
-  logout() {
-    this.spotifyService.logout();
   }
 }
